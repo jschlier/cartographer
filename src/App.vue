@@ -16,6 +16,12 @@
 
     <h2>Played Cards</h2>
 
+    <p>
+      <button @click="drawCard()" :disabled="remainingEnergy < 1">Draw Card</button>
+      <button @click="nextSeason()" :disabled="remainingEnergy > 0 || seasons.length === 0">Next Season</button>
+      <button @click="newGame()">New Game</button>
+    </p>
+    
     <div class="played-cards">
       <card-display
           v-for="(card, index) in playedCards" :key="index" :card="card"
@@ -23,11 +29,6 @@
       ></card-display>
     </div>
 
-    <p>
-      <button @click="drawCard()" :disabled="remainingEnergy < 1">Draw Card</button>
-      <button @click="nextSeason()" :disabled="remainingEnergy > 0 || seasons.length === 0">Next Season</button>
-      <button @click="newGame()">New Game</button>
-    </p>
   </div>
 </template>
 

@@ -8,13 +8,15 @@
 
   <Teleport to="body" v-if="showDetail">
     <div class="modal-backdrop clickable" @click="showDetail = false"></div>
-    <div class="modal">
+    <div class="modal card__detail">
       <div class="modal__header">
         <span class="clickable" @click="showDetail = false">X</span>
+        <span class="card__title">{{ card.name }}</span>
+        <span class="card__costs" v-if="typeof card.costs !== 'undefined'">({{ card.costs}})</span>
       </div>
       <div class="modal__content">
-        {{ card.name }} <span v-if="typeof card.costs !== 'undefined'">({{ card.costs}})</span><br>
-        <img class="card__detail" alt="Example Wertungen" :src="require('@/assets/cards/' + card.id + '.jpg')">
+
+        <img class="" alt="Example Wertungen" :src="require('@/assets/cards/' + card.id + '.jpg')">
       </div>
     </div>
   </Teleport>
@@ -92,12 +94,28 @@ a {
   position: relative;
 }
 .card img {
-  width: 200px;
+  width: 300px;
+  max-width: 100vw;
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 5%;
 }
 
 .card__detail {
+  max-height: 100vh;
   width: 90%;
+}
+
+.card__detail img {
+  border: 1px solid black;
+  border-radius: 5%;
+  max-width: 100%;
+}
+
+.card__title {
+  margin-left: 15px;
+}
+
+.card__costs {
+  float: right;
 }
 </style>
